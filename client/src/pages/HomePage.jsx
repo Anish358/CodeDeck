@@ -17,20 +17,15 @@ const HomePage = () => {
   const getUserProfileAndRepos = useCallback(async (username = "anish358") => {
     setLoading(true);
     try {
-      const userRes = await fetch(`https://api.github.com/users/${username}`);
-      const userProfile = await userRes.json();
-      setUserProfile(userProfile);
-
-      const repoRes = await fetch(
-        `https://api.github.com/users/${username}/repos`
+      const res = await fetch(
+        `http://localhost:5000/api/users/profile/${username}`
       );
-      const repos = await repoRes.json();
+      const { repos, userProfile } = await res.json();
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
+      setUserProfile(userProfile);
       setRepos(repos);
 
-      return {
-        userProfile,
-        repos,
-      };
+      return { userProfile, repos };
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -54,7 +49,7 @@ const HomePage = () => {
     setUserProfile(userProfile);
     setRepos(repos);
     setLoading(false);
-    // setSortType("recent");
+    setSortType("recent");
   };
 
   const onSort = (sortType) => {
