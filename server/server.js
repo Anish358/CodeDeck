@@ -15,12 +15,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 let __dirname = path.resolve();
-const lastIndex = __dirname.lastIndexOf("\\server");
-if (lastIndex !== -1) {
-  __dirname = __dirname.substring(0, lastIndex);
-} else {
-  console.log("The path does not contain 'server'");
-}
 
 app.use(cors());
 
