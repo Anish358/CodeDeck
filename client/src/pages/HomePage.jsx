@@ -17,10 +17,8 @@ const HomePage = () => {
   const getUserProfileAndRepos = useCallback(async (username = "anish358") => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/users/profile/${username}`
-      );
-      const { repos, userProfile } = await res.json();
+      const res = await fetch(`/api/users/profile/${username}`);
+      const { userProfile, repos } = await res.json();
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
       setUserProfile(userProfile);
       setRepos(repos);
@@ -30,6 +28,7 @@ const HomePage = () => {
       toast.error(error.message);
     } finally {
       setLoading(false);
+      console.log(repos, userProfile);
     }
   }, []);
 

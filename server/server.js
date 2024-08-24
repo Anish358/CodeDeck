@@ -25,7 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", (req, res) => {
-  res.send("SERVER UNDER MAINTENANCE");
+  res.send("SERVER UP AND RUNNING");
 });
 
 app.use("/api/auth", authRoutes);
