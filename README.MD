@@ -1,4 +1,4 @@
-# GitHub Clone
+# CodeDeck
 
 ## Overview
 
@@ -7,7 +7,7 @@ GitHub Clone is a simplified version of GitHub, built to provide core functional
 ## Features
 
 - **User Authentication**: Register, log in, and manage user profiles with secure authentication.
-- **Repository Listing**: View repositories of different github users
+- **Repository Listing**: View repositories of different GitHub users
 
 ## Technologies Used
 
